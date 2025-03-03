@@ -1,0 +1,1555 @@
+/* Fonts */
+
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('../fonts/CabinetGrotesk-Thin.woff2') format('woff2'),
+       url('../fonts/CabinetGrotesk-Thin.woff') format('woff'),
+       url('../fonts/CabinetGrotesk-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('../fonts/CabinetGrotesk-Extralight.woff2') format('woff2'),
+       url('../fonts/CabinetGrotesk-Extralight.woff') format('woff'),
+       url('../fonts/CabinetGrotesk-Extralight.ttf') format('truetype');
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('../fonts/CabinetGrotesk-Light.woff2') format('woff2'),
+       url('../fonts/CabinetGrotesk-Light.woff') format('woff'),
+       url('../fonts/CabinetGrotesk-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('../fonts/CabinetGrotesk-Regular.woff2') format('woff2'),
+       url('../fonts/CabinetGrotesk-Regular.woff') format('woff'),
+       url('../fonts/CabinetGrotesk-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('../fonts/CabinetGrotesk-Medium.woff2') format('woff2'),
+       url('../fonts/CabinetGrotesk-Medium.woff') format('woff'),
+       url('../fonts/CabinetGrotesk-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('../fonts/CabinetGrotesk-Bold.woff2') format('woff2'),
+       url('../fonts/CabinetGrotesk-Bold.woff') format('woff'),
+       url('../fonts/CabinetGrotesk-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('../fonts/CabinetGrotesk-Extrabold.woff2') format('woff2'),
+       url('../fonts/CabinetGrotesk-Extrabold.woff') format('woff'),
+       url('../fonts/CabinetGrotesk-Extrabold.ttf') format('truetype');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('../fonts/CabinetGrotesk-Black.woff2') format('woff2'),
+       url('../fonts/CabinetGrotesk-Black.woff') format('woff'),
+       url('../fonts/CabinetGrotesk-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cabinet Grotesk';
+    src: url('../fonts/CabinetGrotesk-Variable.woff2') format('woff2-variations');
+    font-weight: 100 200 300 400 500 700 800 900;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General styles */
+
+body {
+    width: 100vw;
+    margin: 0;
+    padding: 0 32px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    color: #343634;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 500; /* Medium */
+    color: #343634;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body.scroll-locked {
+    overflow: hidden; /* Ensure no scrolling */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+}
+
+body.scroll-locked::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in WebKit browsers (Chrome, Safari) */
+}
+
+html, body {
+    height: auto !important;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: scroll !important;
+}
+
+/* Font styles */
+p, .text {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 700; /* Bold */
+}
+
+h2 {
+    font-size: 48px;
+    font-weight: 400; /* Regular */
+}
+
+h3 {
+    font-size: 32px;
+    font-weight: 500; /* Medium */
+}
+
+h4 {
+    font-size: 28px;
+    font-weight: 500; /* Regular */
+}
+
+h5 {
+    font-size: 20px;
+    font-weight: 700; /* Bold */
+}
+
+h6 {
+    font-size: 20px;
+    font-weight: 500; /* Medium */
+}
+
+/* BUTTONS */
+/* Базовый стиль кнопок */
+.button.regular,
+.button.regular.icon {
+    display: inline-flex; /* Вместо flex, чтобы работало корректно для <a> */
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 8px 16px;
+    border: 1px solid #363436;
+    border-radius: 8px;
+    font-family: "Cabinet Grotesk", sans-serif;
+    font-size: 16px;
+    font-weight: 500; /* Medium */
+    line-height: 1;
+    cursor: pointer;
+    background: transparent;
+    color: #363436;
+    text-decoration: none; /* Убираем подчеркивание */
+    transition: all 0.2s ease-in-out;
+}
+
+/* Ховер эффект для обычной кнопки */
+.button.regular:hover {
+    background: #3693FF;
+    border-color: #3693FF;
+    color: #FFFFFF;
+}
+
+/* Стили кнопки с иконкой */
+.button.regular.icon {
+    gap: 4px; /* Отступ между текстом и иконкой */
+}
+
+/* Анимация иконки */
+.button.regular.icon img {
+    transition: 0.2s ease-in-out;
+}
+
+/* Меняем цвет иконки при наведении */
+.button.regular.icon:hover img {
+    filter: brightness(0) invert(1); /* Делает иконку белой */
+}
+
+/* LINKS */
+.link {
+    color: #3693FF;
+    text-decoration: underline;
+}
+
+.link-hover:hover {
+    color: #37B2FF;
+    text-decoration: none;
+}
+
+/* Header */
+
+header {
+    background-color: rgba(255, 255, 255, 1);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9997;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 32px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+}
+
+#logo {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+}
+
+.logo-container {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: circle(24px at center);
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 8px;
+}
+
+/* Navigation */
+.header-menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.header-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+}
+
+.header-menu ul li {
+    display: inline;
+}
+
+.header-menu ul li:nth-child(3) a,
+.header-menu ul li:nth-child(3) a:hover,
+.header-menu ul li:nth-child(3) a:focus {
+    cursor: url('assets/icons/cs_cursor.svg') 18 18, auto !important;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #343634;
+    font-weight: bold;
+}
+
+.menu-inactive {
+    text-decoration: none;
+    color: #343634;
+    font-weight: bold;
+    opacity: 0.2;
+}
+
+nav ul li a:hover {
+    color: #3693FF;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.menu-inactive:hover {
+    text-decoration: none !important;
+    color: #343634 !important;
+    font-weight: bold;
+    opacity: 0.2;
+    cursor: default;
+}
+
+@media (max-width: 1000px) {
+    /* Hide the header menu */
+    .header-menu {
+        display: none;
+    }
+
+    /* Hide the "Where am I?" text */
+    .header-right h5 {
+        display: none;
+    }
+
+    /* Replace the location pin icon with another icon */
+    .header-right img {
+        display: none; /* Hide the current icon */
+    }
+
+    .header-right::after {
+        content: url('assets/icons/ic_menu.svg'); /* Replace with your new icon */
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        cursor: pointer; /* Add pointer cursor */
+    }
+
+    /* Adjust header-right spacing */
+    .header-right {
+        gap: 0; /* Remove gap between text and icon */
+    }
+}
+
+/* Mobile menu */
+
+/* Full-screen overlay */
+.fullscreen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.9) 20%, rgba(255, 255, 255, 0.5) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 9999; /* Ensure it's above everything */
+    display: flex; /* Always flex, but hidden by opacity */
+    flex-direction: column;
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Hide from interaction */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    overflow: hidden; /* Prevent internal scrolling */
+}
+
+.fullscreen-overlay.active {
+    opacity: 1; /* Fully visible */
+    visibility: visible; /* Show for interaction */
+}
+
+/* Ensure no internal content causes overflow */
+.fullscreen-overlay * {
+    overflow: hidden !important;
+}
+
+/* Header of the overlay */
+.fullscreen-overlay-header {
+    height: 80px;
+    background-color: #FFFFFF; /* Full white opaque background */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px; /* 32px margin on both sides */
+}
+
+/* Logo block in the header */
+.fullscreen-overlay-header .logo-block {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* 16px gap between logo and text */
+}
+
+.fullscreen-overlay-header .logo-block img {
+    width: 48px;
+    height: 48px;
+}
+
+.fullscreen-overlay-header .logo-block span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Close icon in the header */
+.fullscreen-overlay-header .close-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.fullscreen-overlay-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px; /* 40px margin from the top */
+    padding: 0 32px; /* Add horizontal padding for better spacing */
+    align-items: flex-end; /* Align items to the right */
+}
+
+.fullscreen-overlay-menu h5 {
+    margin: 0; /* Remove default margin */
+    font-size: 20px; /* Match the font size of the regular menu */
+    font-weight: bold; /* Match the font weight */
+    color: #343634; /* Match the text color */
+    cursor: pointer; /* Add pointer cursor */
+    transition: opacity 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.fullscreen-overlay-menu h5 a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color from parent */
+}
+
+.fullscreen-overlay-menu h5:hover {
+    color: #3693FF;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+
+/* Geo Overlay Styles */
+.location-overlay {
+    position: fixed;
+    top: 0; /* Stick to the top */
+    right: -500px; /* Start off-screen */
+    width: 500px;
+    height: 330px;
+    background: #FFFFFF url('assets/locs/ph.png') no-repeat center center;
+    background-size: cover;
+    color: #000;
+    padding: 24px 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 9998; /* Above everything */
+    border-radius: 8px;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.08);
+    transform: rotate(-3deg);
+    transform-origin: top right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Location Text container */
+.location-content {
+    width: 270px;
+}
+
+/* Location Header */
+.location-content h5 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Location Time text */
+#local-time {
+    margin-top: 0px;
+    font-size: 16px;
+    font-weight: 500;
+    opacity: 50%;
+}
+
+/* Location Paragraph */
+.location-content p {
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+/* Location Sticky icon button */
+.location-overlay .button.regular.icon {
+    align-self: flex-start;
+    margin-top: auto; /* Push to bottom */
+}
+
+/* Show overlay on hover */
+.header-right:hover + .location-overlay,
+.location-overlay:hover {
+    right: 0;
+}
+
+
+
+/* Hero section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Центрируем по вертикали */
+    height: calc(100vh - 160px); /* Учитываем 80px хедера */
+    width: 100%;
+    max-width: 100%;
+    min-height: calc(100vh - 160px);
+    padding: 0px;
+    margin-top: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+
+/* Контейнер hero content */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Центрирование по вертикали */
+    text-align: center;
+    height: auto;
+    flex-grow: 1;
+}
+
+
+/* Hero text container */
+.hero-text {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.1;
+    position: relative; 
+    transform: none; 
+    cursor: default;
+}
+
+
+.herotext-main {
+    font-size: 42px;
+    font-weight: bold;
+    color: transparent;
+    background-image: url('../assets/images/blueprint.png');
+    background-size: 200%; /* Enlarged for smooth animation */
+    background-position: 0 50%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate-background 60s infinite alternate linear;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.herotext-secondary {
+    font-size: 42px;
+    font-weight: bold;
+    color: #343634;
+    font-weight: 400;
+}
+
+
+/* Responsive styles for screens narrower than 700px */
+@media (max-width: 1000px) {
+    .herotext-main {
+        font-size: 32px; /* Smaller font size for smaller screens */
+    }
+    .herotext-secondary {
+        font-size: 32px; /* Smaller font size for smaller screens */
+    }
+}
+
+@keyframes animate-background {
+    0% {
+        background-position: 0 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+
+#rotatingObject {
+    position: absolute;
+    width: auto;
+    height: 500px;
+    pointer-events: none;
+    transition: opacity 0.07s linear; /* Smooth fade effect */
+    opacity: 1;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.hero-footer {
+    background-color: transparent;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    z-index: 9997;
+    padding: 0 32px;
+}
+
+
+
+.hero-footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 0 16px; /* 16px bottom padding */
+}
+
+
+.hero-footer-left {
+    flex: 1;
+}
+
+.hero-footer-right {
+    flex: 1;
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-end;
+}
+
+.hero-footer-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.scroll-down-prompt {
+    bottom: 32px;
+    right: calc(32px + 15px);
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Space between text and icon */
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#scrollLottieWrapper {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#circleBackground {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    fill: white !important;
+    background-color: white !important;
+    opacity: 0.2;
+    border-radius: 6px !important;
+    display: block !important;
+    z-index: 10000;
+}
+
+#scrollLottie {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    z-index: 10001;
+}
+
+.scroll-down-prompt, #scrollLottieWrapper {
+    opacity: 1 !important;
+}
+
+.scroll-down-prompt h5 {
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+/* CTA Block */
+.cta {
+    padding: 12px 24px; 
+    border: 1px solid #F4F4F4;
+    border-radius: 8px;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.04);
+    font-size: 20px;
+    background-color: white;
+    z-index: 9999;
+    display: flex; 
+    align-items: center;
+    position: relative;
+    opacity: 1; /* Default full opacity */
+    transition: opacity 0.6s ease-in-out; /* Smooth transition */
+}
+
+.cta:hover {
+    opacity: 1 !important; /* Ensure full opacity on hover */
+}
+
+
+
+.cta-content {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Применится ко всем, кроме первого элемента */
+}
+
+/* CTA Lottie Animation */
+#cta-animation {
+    width: 20px;
+    height: 20px;
+    margin-right: 4px; /* Отступ после Lottie-анимации */
+}
+
+
+/* CTA Text */
+.cta-text {
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 12px; /* Отступ после текста */
+}
+
+
+
+.main-content {
+    padding: 32px;
+    box-sizing: border-box;
+    margin-top: 80px;
+}
+
+
+.references-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.references-container h5 {
+    margin-bottom: 16px;
+}
+
+.references {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 36px; /* Space between logos */
+    flex-wrap: nowrap; /* Prevents logos from wrapping */
+}
+
+.references img {
+    height: 48px; /* Fixed height */
+    width: auto; /* Maintain aspect ratio */
+    opacity: 0.25;
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 48px;
+}
+
+.references img:hover {
+    opacity: 1;
+}
+
+
+
+.case-studies {
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap into new rows */
+    justify-content: center; /* Centers cards if fewer than 2 in a row */
+    gap: 16px;
+    margin: 0px;
+}
+
+.case-study-card {
+    width: calc(50% - 8px); /* 2 cards per row */
+    max-width: 780px;
+    min-height: 360px;
+    background-color: #FFFFFF; /* White background */
+    border: 1px solid #F9F9F9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.04);
+    padding: 24px;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden; /* Ensures background images don’t overflow */
+}
+
+.case-study-card:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+.case-study-card:hover .case-study-link {
+    background: rgba(255, 255, 255, 1);
+    opacity: 1;
+    pointer-events: auto; /* Enable interaction when visible */
+}
+
+.case-study-content {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.9) 20%, rgba(255, 255, 255, 0.5) 100%);
+    backdrop-filter: blur(12px); /* Blurs everything behind */
+    -webkit-backdrop-filter: blur(12px); /* Safari support */
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px 24px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: fit-content;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for depth */
+}
+
+/* Headline text */
+.case-study-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between text and logo */
+}
+
+/* Project logo */
+.case-study-logo {
+    width: 32px;
+    height: 32px;
+}
+
+/* Second line text */
+.case-study-description {
+    font-size: 16px;
+    font-weight: 500; /* Medium */
+    margin-top: 4px;
+}
+
+.case-study-link {
+    background: rgba(255, 255, 255, 0); /* Fully transparent by default */
+    border-radius: 8px;
+    padding: 8px 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    transition: background 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; /* Add opacity transition */
+    max-width: fit-content;
+    opacity: 0; /* Hide it initially */
+    pointer-events: none; /* Prevent interaction when hidden */
+}
+
+
+/* Small icon */
+.case-study-link-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Responsive behavior */
+@media (max-width: 850px) { 
+    .case-study-card {
+        width: 100% !important; /* Full width on smaller screens */
+        max-width: none; /* Ensure it doesn't have a max width */
+    }
+}
+
+
+/* Case Under Construction */
+.case-under-construction {
+    background: url('assets/images/under_construction.jpg') center/cover no-repeat;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+}
+
+.case-under-construction::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3); /* White overlay with 80% opacity */
+    mix-blend-mode: lighten; /* Adjust blend mode for a more natural fade */
+    z-index: 1; /* Ensure it's on top of the background */
+}
+
+/* Keeps text and content on top */
+.case-under-construction * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Prevent .case-study-link from appearing on hover */
+.case-under-construction:hover .case-study-link {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+
+/* Tubit case card: custom styling */
+.tubit-case-card {
+    background: radial-gradient(circle at bottom right, #FF3073 0%, #FFFFFF 70%);
+    background-size: cover;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden; /* Ensures the image stays inside the card */
+}
+
+.tubit-case-card * {
+    position: relative;
+    z-index: 1;
+}
+
+.tubit-case-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120%;
+    height: 120%;
+    background-image: url('assets/images/tubit_preview.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top right;
+    transform-origin: bottom left;
+    transform: rotate(5deg);
+    transition: transform 0.3s ease-in-out;
+    z-index: 0; /* Ensures it stays in the background */
+}
+
+/* On hover, rotate it back to normal */
+.tubit-case-card:hover::after {
+    transform: rotate(0deg);
+}
+
+
+
+/* ABOUT ME */
+.about-me {
+    margin-top: 48px;
+}
+
+/* Headline */
+.about-me h4 {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 16px;
+    margin-left: 0px;
+    margin-right: 32px;
+    max-width: calc(100% - 64px);
+}
+
+/* Flex container for text & image */
+.about-me-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0px;
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Text Block */
+.about-me-text {
+    flex: 0 0 600px; /* Fixed width for readability on wide screens */
+    max-width: 600px; /* Ensure it never exceeds 600px */
+    padding-left: 32px;
+}
+
+.about-me-text p {
+    margin-bottom: 16px; /* Adjust spacing between paragraphs */
+}
+
+/* Remove margin-bottom for the last paragraph */
+.about-me-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* When in column layout (full width), add right padding */
+@media (max-width: 768px) {
+    .about-me-text {
+        max-width: 100%; /* Full width */
+        padding-right: 32px; /* Add right padding only in column layout */
+    }
+}
+
+/* Image Block */
+.about-me-image {
+    flex-shrink: 0;
+    max-width: 436px; /* Adjust based on design */
+    margin-left: auto;
+    overflow: hidden; /* Ensures image stays within bounds */
+    display: flex;
+    justify-content: flex-end; /* Push image to the right */
+}
+
+.about-me-image img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    transform: translateX(30%); /* Shift image 30% to the right */
+    transition: transform 0.4s ease-in-out; /* Smooth animation */
+    cursor: url('assets/images/lupa.png'), pointer;
+    object-fit: cover;
+}
+
+.about-me-image img:hover {
+    transform: translateX(0); /* Move back to original position on hover */
+}
+
+/* 📌 Column Layout now switches at 768px */
+@media (max-width: 768px) {
+    .about-me-container {
+        flex-direction: column !important;
+        align-items: flex-start !important; /* Keep text left-aligned */
+        text-align: left !important;
+    }
+
+    .about-me-text {
+        flex: 0 0 100%; /* Make text take full width */
+        max-width: 100% !important;
+        text-align: left !important;
+        padding-left: 32px;
+    }
+
+    .about-me-image {
+        order: -1 !important; /* Move above text */
+        width: 100% !important; /* Full width */
+        max-width: 100% !important; /* Prevent overflow */
+        display: flex;
+        justify-content: flex-end; /* Keep image to the right */
+    }
+
+    .about-me-image img {
+        max-height: 300px; /* Prevents image from being too tall */
+        width: auto; /* Maintain aspect ratio */
+        max-width: 80%; /* Prevent it from being too wide */
+        object-fit: cover; /* Fill container properly */
+    }
+}
+
+@media (max-width: 480px) {
+    .about-me-image img {
+        max-height: 200px; /* Smaller size for mobile */
+    }
+}
+
+
+/* 🔗 Links Block */
+.about-me-links {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping */
+    column-gap: 36px; /* Horizontal gap between link+icon pairs */
+    row-gap: 16px;    /* Vertical gap when links wrap */
+    justify-content: flex-start;
+    margin: 0 32px;   /* 32px margins on both sides */
+    padding-top: 16px;
+}
+
+/* Link + Icon Styling inside Links Block */
+.about-me-links a {
+    font-weight: 500; /* Medium weight */
+    font-size: 20px;
+    display: inline-flex; /* Keep text and icon together */
+    align-items: center;
+    white-space: nowrap;
+}
+
+/* Icon wrapper for proper positioning */
+.link-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 24px !important;
+    height: 24px !important;
+    margin-left: 4px; /* Space between text and icon */
+}
+
+/* Force all icons inside to be 24x24px */
+.link-icon-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px !important;
+    height: 24px !important;
+    object-fit: contain;
+}
+
+/* Default icon visible, hover icon hidden */
+.icon-default {
+    opacity: 1;
+}
+
+.icon-hover {
+    opacity: 0;
+}
+
+/* On link hover, swap icons */
+.link:hover .icon-default {
+    opacity: 0;
+}
+
+.link:hover .icon-hover {
+    opacity: 1;
+}
+
+
+
+
+/* CAREER TRACK */
+
+/* General Styles */
+.career-track {
+    margin-top: 64px;
+    overflow-x: hidden; /* Prevents unwanted horizontal scrolling */
+    position: relative;
+}
+
+/* Headline */
+.career-track h4 {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 16px;
+    margin-left: 32px;
+    margin-right: 32px;
+    max-width: calc(100% - 64px);
+}
+
+/* Career Track Container */
+.career-track-container {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Space between cards */
+    padding-left: 32px; /* Left margin */
+    padding-right: 32px; /* Right margin */
+    overflow: visible; /* Allow box shadows to be seen */
+    white-space: nowrap; /* Prevent wrapping */
+    flex-wrap: nowrap;
+    min-width: max-content; /* Allows container to grow past viewport */
+    position: relative;
+    transform: translateX(0); /* Default position */
+    padding-bottom: 16px; /* Prevent shadow from being clipped */
+}
+
+/* Career Cards */
+.career-card {
+    background-color: #FFFFFF;
+    display: flex;
+    min-width: 240px;
+    max-width: 300px;
+    height: 120px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between; /* Pushes career-year to the bottom */
+    padding: 16px 20px;
+    border: 1px solid #F4F4F4;
+    border-radius: 8px;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.04);
+}
+
+
+/* Connector Image */
+.career-connector {
+    width: 95px !important;
+    height: 10px;
+    flex-shrink: 0;
+    opacity: 15%;
+    background: url("assets/images/connector.svg") no-repeat center;
+    background-size: contain;
+}
+
+/* Job Logo */
+.career-logo {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+
+.career-info p {
+    margin: 4px 0;
+}
+
+.career-title {
+    display: flex;
+    align-items: flex-start;
+    width: 100%; /* Ensures the row spans the card width */
+    gap: 4px !important; /* Adds space between text and image */
+}
+
+
+/* Paragraph (Years of Work) */
+.career-card p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* Job Years + Icon in One Line */
+.career-year {
+    display: inline-flex;
+    align-items: center;
+    gap: 0px;
+    white-space: nowrap;
+}
+
+
+/* Icon Size */
+.career-year img {
+    max-width: 16px;
+    height: 16px;
+    margin-left: 4px;
+}
+
+/* Make career-track-container shift left on smaller screens */
+@media (max-width: 1200px) {
+    .career-track-container {
+        transform: translateX(calc(100vw - 100%));
+    }
+}
+
+/* SWITCH TO ONE COLUMN ON MOBILE */
+@media (max-width: 700px) {
+    .career-track-container {
+        display: block; /* Stack elements vertically */
+        min-width: 100%; /* Prevent horizontal scrolling */
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 16px; /* Extra space to avoid shadow clipping */
+    }
+
+    .career-card {
+        max-width: calc(100% - 32px); /* Full width minus margins */
+        width: 100%;
+        height: auto; /* Let content define height */
+        padding: 16px; /* Add more spacing for better readability */
+        display: flex;
+        flex-direction: column; /* Switch layout inside the card */
+        align-items: flex-start; /* Align content to left */
+        gap: 8px; /* Space between elements */
+    }
+
+    /* Title + Logo in One Row */
+    .career-title {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    /* Subtitle (Company Name) */
+    .career-subtitle {
+        opacity: 0.6;
+    }
+
+    /* Container for Title, Logo, and Subtitle */
+    .career-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    /* Align Work Years to the Right */
+    .career-card {
+        display: flex;
+        flex-direction: row; /* Arrange content in a row */
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Ensure Work Years are Pushed to the Right */
+    .career-year {
+        margin-left: auto;
+    }
+
+    /* Swap horizontal connector for vertical one */
+    .career-connector {
+        width: 24px !important;
+        height: 24px !important;
+        background: url("assets/icons/ic_down.svg") no-repeat center !important;
+        background-size: contain !important;
+        margin: 4px auto; /* Center the vertical arrow */
+        display: block;
+    }
+
+    /* Smaller Logo on Mobile */
+    .career-logo {
+        width: 16px;
+        height: 16px;
+        margin-bottom: 0px;
+    }
+}
+
+
+/* Press block */
+.press-track {
+    width: 100%;
+    margin-top: 64px;
+    overflow-x: hidden;
+    position: relative;
+    padding: 0px; /* Ensures no overflow on smaller screens */
+    padding-bottom: 128px;
+}
+
+/* Headline */
+.press-track h4 {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 16px;
+    margin-left: 32px;
+    margin-right: 32px;
+    max-width: calc(100% - 64px);
+}
+
+/* Press Track Container */
+.press-track-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-left: 32px;
+    margin-right: 32px;
+    width: calc(100% - 64px); /* Keeps 32px margins */
+    justify-content: flex-start; /* Ensures row layout */
+    padding-bottom: 16px;
+    margin: 0 auto;
+    padding: 0px;
+    overflow: visible;
+}
+
+
+
+/* Press Cards */
+/* General card styling */
+.press-card {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px 20px;
+    border: 1px solid #F4F4F4;
+    border-radius: 8px;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.04);
+    flex: 1 1 100%; /* Always take full width */
+    min-width: 280px; /* Prevents cards from becoming too small */
+    max-width: 100%; /* Ensure it doesn’t shrink unnecessarily */
+    cursor: pointer;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+
+/* Hover effect */
+.press-card:hover {
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.08);
+}
+
+/* Press Icon */
+.press-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    opacity: 50%;
+}
+
+/* Press Logo */
+.press-logo {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+/* Press Info */
+.press-info p {
+    margin: 4px 0;
+}
+
+.press-title {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+/* Paragraph (Publication Title) */
+.press-card p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* Ensure the container keeps content centered */
+.press-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Centers cards within the viewport */
+    gap: 16px;
+    max-width: 1200px; /* Prevents too-wide layouts */
+    margin: 0 auto; /* Ensures centering */
+}
+
+
+/* Responsive Tweaks */
+@media (max-width: 1200px) {
+    .press-container {
+        max-width: 100%;
+        padding: 0 16px; /* Ensures proper spacing */
+    }
+}
+
+@media (max-width: 700px) {
+    .press-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .press-card {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        padding: 16px;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .press-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .press-title {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .press-icon {
+        align-self: flex-end;
+        margin-left: auto;
+    }
+
+    .press-logo {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Ensure proper layout on desktop */
+@media (min-width: 701px) {
+    .press-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Ensures top-bottom spacing */
+        flex: 1 1 calc(33.33% - 64px); /* Default: 3 cards per row */
+        max-width: calc(33.33vw - 36px);
+        min-width: 280px;
+    }
+
+    .press-info {
+        align-self: flex-start; /* Ensures text stays top-left */
+    }
+
+    /* Align the press-icon to the bottom-right without absolute positioning */
+    .press-card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .press-icon {
+        align-self: flex-end; /* Moves it to the right */
+        margin-top: auto; /* Pushes it to the bottom */
+    }
+
+    .press-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Keeps cards centered */
+    }
+
+    .press-container:has(.press-card:nth-child(2)) .press-card {
+    max-width: 100%;
+}
+
+    .press-container:not(:has(.press-card:nth-child(2))) .press-card {
+    max-width: 500px;
+}
+
+/* FOOTER */
+
+.footer {
+    padding: 24px 32px 100px;
+    text-align: center;
+}
+
+.footer-line {
+    border: none;
+    height: 1px;
+    background-color: #343634;
+    width: 100%;
+    opacity: 0.2;
+}
+
+.footer-content {
+    margin-top: 24px;
+}
+
+
+/* --- */
+
+
+
