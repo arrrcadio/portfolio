@@ -306,7 +306,6 @@
 }
 
 
-
 .case-studies {
     display: flex;
     flex-wrap: wrap; /* Allows cards to wrap into new rows */
@@ -341,6 +340,12 @@
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     pointer-events: auto; /* Enable interaction when visible */
+}
+
+.case-studies:has(.case-study-card:only-child) .case-study-card,
+.case-studies .case-study-card:last-child:nth-child(odd) {
+    width: 100%;
+    max-width: none;
 }
 
 .case-study-content {
@@ -413,13 +418,9 @@
 
 /* Case Under Construction */
 .case-under-construction {
-    background: url('../assets/images/under_construction.jpg') center/cover no-repeat;
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    overflow: hidden;
-    background-size: cover;
+    background: url('../assets/images/under_construction.jpg') repeat;
+    background-size: auto; /* Ensures the image repeats at its original size */
+    background-position: top left; /* Aligns the repeating tiles from the top left */
 }
 
 .case-under-construction::after {
@@ -678,6 +679,10 @@
     position: relative;
 }
 
+.career-spacer {
+    flex-grow: 1; /* Takes up all remaining horizontal space */
+}
+
 /* Headline */
 .career-track h4 {
     width: 100%;
@@ -723,11 +728,11 @@
 
 /* Connector Image */
 .career-connector {
-    width: 95px !important;
-    height: 10px;
+    width: 24px !important;
+    height: 24px;
     flex-shrink: 0;
     opacity: 15%;
-    background: url("../assets/images/connector.svg") no-repeat center;
+    background: url("../assets/icons/ic_arrow-right.svg") no-repeat center;
     background-size: contain;
 }
 
@@ -774,12 +779,6 @@
     margin-left: 4px;
 }
 
-/* Make career-track-container shift left on smaller screens */
-@media (max-width: 1200px) {
-    .career-track-container {
-        transform: translateX(calc(100vw - 100%));
-    }
-}
 
 
 /* SWITCH TO ONE COLUMN ON MOBILE */
@@ -812,7 +811,7 @@
     .career-title {
         display: flex;
         align-items: flex-start;
-        margin-bottom: 8px; /* Adjust spacing between title and subtitle */
+        margin-bottom: 0px; /* Adjust spacing between title and subtitle */
     }
 
     .career-track {
@@ -864,6 +863,13 @@
     }
 }
 
+
+@media (min-width: 701px) {  
+    .career-track-wrapper {
+        display: flex;
+        justify-content: flex-end; /* Push content to the right only on wide screens */
+    }
+}
 
 @media (max-width: 1000px) {
 .career-track h4 {
@@ -1072,6 +1078,3 @@
 
 
 }
-
-
-

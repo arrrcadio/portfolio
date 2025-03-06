@@ -38,8 +38,8 @@ body .footer {
 
 /* Image styles */
 .footer-img {
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
     display: block;
     background-image: url("../assets/images/lightning_1.gif"); /* Default image */
     background-size: contain;
@@ -47,6 +47,8 @@ body .footer {
     background-position: center;
     cursor: pointer; /* Pointer on hover */
     margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 12px;
 }
 
 .footer-img:hover {
