@@ -1,0 +1,63 @@
+
+.footer {
+    padding: 24px 32px 100px;
+    text-align: center;
+}
+
+@media (max-width: 1000px) {
+
+.footer {
+    padding: 24px 16px 100px !important;
+}  
+
+body .footer {
+        padding: 24px 16px 100px !important;
+    }  
+
+}
+
+.footer-line {
+    border: none;
+    height: 1px;
+    background-color: #343634;
+    width: 100%;
+    opacity: 0.2;
+}
+
+.footer-content {
+    margin-top: 24px;
+}
+
+/* Container to keep the image centered */
+.footer-container {
+    display: flex;
+    justify-content: center; /* Centers the content horizontally */
+    align-items: center;
+    width: 100%;
+}
+
+/* Image styles */
+.footer-img {
+    width: 64px;
+    height: 64px;
+    display: block;
+    background-image: url("../assets/images/lightning_1.gif"); /* Default image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer; /* Pointer on hover */
+    margin: 0 auto;
+}
+
+.footer-img:hover {
+    cursor: !important; /* Pointer on hover */
+}
+
+/* Hover and click states */
+.footer-img.hover-state {
+    background-image: url("../assets/images/lightning_2.gif");
+}
+
+.footer-img.click-state {
+    background-image: url("../assets/images/lightning.gif");
+}

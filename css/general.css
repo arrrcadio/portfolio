@@ -1,0 +1,132 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General styles */
+
+body {
+    width: 100vw;
+    margin: 0;
+    padding: 0 32px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    color: #343634;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 500; /* Medium */
+    color: #343634;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body.scroll-locked {
+    overflow: hidden;
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+}
+
+body.scroll-locked::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in WebKit browsers (Chrome, Safari) */
+}
+
+html, body {
+    height: auto !important;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: scroll !important;
+}
+
+/* Font styles */
+p, .text {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 700; /* Bold */
+}
+
+h2 {
+    font-size: 48px;
+    font-weight: 400; /* Regular */
+}
+
+h3 {
+    font-size: 32px;
+    font-weight: 500; /* Medium */
+}
+
+h4 {
+    font-size: 28px;
+    font-weight: 500; /* Regular */
+}
+
+h5 {
+    font-size: 20px;
+    font-weight: 700; /* Bold */
+}
+
+h6 {
+    font-size: 20px;
+    font-weight: 500; /* Medium */
+}
+
+/* BUTTONS */
+/* Базовый стиль кнопок */
+.button.regular,
+.button.regular.icon {
+    display: inline-flex; /* Вместо flex, чтобы работало корректно для <a> */
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 8px 16px;
+    border: 1px solid #363436;
+    border-radius: 8px;
+    font-family: "Cabinet Grotesk", sans-serif;
+    font-size: 16px;
+    font-weight: 500; /* Medium */
+    line-height: 1;
+    cursor: pointer;
+    background: transparent;
+    color: #363436;
+    text-decoration: none; /* Убираем подчеркивание */
+    transition: all 0.2s ease-in-out;
+}
+
+/* Ховер эффект для обычной кнопки */
+.button.regular:hover {
+    background: #3693FF;
+    border-color: #3693FF;
+    color: #FFFFFF;
+}
+
+/* Стили кнопки с иконкой */
+.button.regular.icon {
+    gap: 4px; /* Отступ между текстом и иконкой */
+}
+
+/* Анимация иконки */
+.button.regular.icon img {
+    transition: 0.2s ease-in-out;
+}
+
+/* Меняем цвет иконки при наведении */
+.button.regular.icon:hover img {
+    filter: brightness(0) invert(1); /* Делает иконку белой */
+}
+
+/* LINKS */
+.link {
+    color: #3693FF;
+    text-decoration: underline;
+}
+
+.link-hover:hover {
+    color: #37B2FF;
+    text-decoration: none;
+}

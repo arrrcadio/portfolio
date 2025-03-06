@@ -1,0 +1,339 @@
+/* Header */
+header {
+    background-color: rgba(255, 255, 255, 1);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9997;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 32px; /* Default padding */
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+}
+
+#logo {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+}
+
+.logo-container {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: circle(24px at center);
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 8px;
+}
+
+/* Navigation */
+.header-menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.header-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+}
+
+.header-menu ul li {
+    display: inline;
+}
+
+.header-menu ul li:nth-child(3) a,
+.header-menu ul li:nth-child(3) a:hover,
+.header-menu ul li:nth-child(3) a:focus {
+    cursor: url('../assets/icons/cs_cursor.svg') 18 18, auto !important;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #343634;
+    font-weight: bold;
+}
+
+.menu-inactive {
+    text-decoration: none;
+    color: #343634;
+    font-weight: bold;
+    opacity: 0.2;
+}
+
+nav ul li a:hover {
+    color: #3693FF;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.menu-inactive:hover {
+    text-decoration: none !important;
+    color: #343634 !important;
+    font-weight: bold;
+    opacity: 0.2;
+    cursor: default;
+}
+
+@media (max-width: 1000px) {
+    /* Adjust header padding for mobile */
+    .header-container {
+        padding: 0 16px; /* Change from 32px to 16px */
+    }
+
+    /* Hide the header menu */
+    .header-menu {
+        display: none;
+    }
+
+    /* Hide the "Where am I?" text */
+    .header-right h5 {
+        display: none;
+    }
+
+    /* Replace the location pin icon with another icon */
+    .header-right img {
+        display: none; /* Hide the current icon */
+    }
+
+    .header-right::after {
+        content: url('../assets/icons/ic_menu.svg'); /* Replace with your new icon */
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        cursor: pointer; /* Add pointer cursor */
+    }
+
+    /* Adjust header-right spacing */
+    .header-right {
+        gap: 0; /* Remove gap between text and icon */
+    }
+}
+
+/* Mobile menu */
+
+/* Full-screen overlay */
+.fullscreen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 10010;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    overflow: hidden;
+    transform: translateZ(0); /* Force hardware acceleration */
+    will-change: opacity, backdrop-filter; /* Optimize for changes */
+}
+
+
+.fullscreen-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)); /* Simplified gradient */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: -1; /* Place behind the overlay content */
+}
+
+.fullscreen-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Ensure no internal content causes overflow */
+.fullscreen-overlay,
+.fullscreen-overlay * {
+    overflow: hidden !important;
+}
+
+/* Header of the overlay */
+.fullscreen-overlay-header {
+    height: 80px;
+    background-color: #FFFFFF; /* Full white opaque background */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px; /* Default padding */
+}
+
+/* Logo block in the header */
+.fullscreen-overlay-header .logo-block {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* 16px gap between logo and text */
+}
+
+.fullscreen-overlay-header .logo-block img {
+    width: 48px;
+    height: 48px;
+}
+
+.fullscreen-overlay-header .logo-block span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Close icon in the header */
+.fullscreen-overlay-header .close-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.fullscreen-overlay-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px; /* 40px margin from the top */
+    padding: 0 32px; /* Default padding */
+    align-items: flex-end; /* Align items to the right */
+}
+
+.fullscreen-overlay-menu h5 {
+    margin: 0; /* Remove default margin */
+    font-size: 20px; /* Match the font size of the regular menu */
+    font-weight: bold; /* Match the font weight */
+    color: #343634; /* Match the text color */
+    cursor: pointer; /* Add pointer cursor */
+    transition: opacity 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.fullscreen-overlay-menu h5 a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color from parent */
+}
+
+.fullscreen-overlay-menu h5:hover {
+    color: #3693FF;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+body.scroll-locked {
+    overflow: hidden;
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+}
+
+body.scroll-locked::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in WebKit browsers (Chrome, Safari) */
+}
+
+@media (max-width: 1000px) {
+    /* Adjust fullscreen overlay padding for mobile */
+    .fullscreen-overlay-header {
+        padding: 0 16px; /* Change from 32px to 16px */
+    }
+
+    .fullscreen-overlay-menu {
+        padding: 0 16px; /* Change from 32px to 16px */
+    }
+}
+
+/* Geo Overlay Styles */
+.location-overlay {
+    position: fixed;
+    top: 0; /* Stick to the top */
+    right: -500px; /* Start off-screen */
+    width: 500px;
+    height: 330px;
+    background: #FFFFFF url('../assets/locs/ph.png') no-repeat center center;
+    background-size: cover;
+    color: #000;
+    padding: 24px 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 9998; /* Above everything */
+    border-radius: 8px;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.08);
+    transform: rotate(-3deg);
+    transform-origin: top right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Location Text container */
+.location-content {
+    width: 270px;
+}
+
+/* Location Header */
+.location-content h5 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Location Time text */
+#local-time {
+    margin-top: 0px;
+    font-size: 16px;
+    font-weight: 500;
+    opacity: 50%;
+}
+
+/* Location Paragraph */
+.location-content p {
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+/* Location Sticky icon button */
+.location-overlay .button.regular.icon {
+    align-self: flex-start;
+    margin-top: auto; /* Push to bottom */
+}
+
+/* Show overlay on hover */
+.header-right:hover + .location-overlay,
+.location-overlay:hover {
+    right: 0;
+}

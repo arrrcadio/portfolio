@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Make the logo block clickable
     headerLeft.style.cursor = "pointer"; // Show pointer cursor
     headerLeft.addEventListener("click", () => {
-        window.location.href = "index.html"; // Redirect to main page
+        window.location.href = "https://mochul.ski"; // Redirect to main page
     });
 });
 
@@ -45,23 +45,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Show overlay on hover (for larger screens only)
     headerRight.addEventListener("mouseenter", () => {
-        if (window.innerWidth > 1000) { // Only apply hover behavior on larger screens
+        if (window.innerWidth > 1000) {
             overlay.style.right = "0";
         }
     });
 
     // Hide overlay when leaving overlay (for larger screens only)
     overlay.addEventListener("mouseleave", () => {
-        if (window.innerWidth > 1000) { // Only apply hover behavior on larger screens
+        if (window.innerWidth > 1000) {
             overlay.style.right = "-500px";
         }
     });
 
     // Show full-screen overlay on click (for smaller screens only)
     headerRight.addEventListener("click", () => {
-        if (window.innerWidth <= 1000) { // Only apply click behavior on smaller screens
-            fullscreenOverlay.classList.add("active");
-            disableScroll(); // Disable scrolling
+        if (window.innerWidth <= 1000) {
+            // Add a small delay to prevent flickering
+            setTimeout(() => {
+                fullscreenOverlay.classList.add("active");
+                disableScroll(); // Disable scrolling
+            }, 50); // 50ms delay
         }
     });
 
@@ -100,10 +103,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to disable scrolling
     function disableScroll() {
         // Lock the body and HTML scroll
-        document.body.classList.add("scroll-locked"); // Add scroll-locked class
+        document.body.classList.add("scroll-locked");
         document.body.style.overflow = "hidden";
-        document.body.style.height = "100vh"; // Ensure the body doesn't scroll
-        document.documentElement.style.overflow = "hidden"; // Lock scroll on the HTML element
+        document.body.style.position = "fixed"; // Prevent scrolling by fixing the body position
+        document.body.style.width = "100%"; // Ensure the body doesn't shift when the scrollbar disappears
 
         // Prevent default scroll behavior (e.g., mouse wheel, touch events)
         document.addEventListener("wheel", preventScroll, { passive: false });
@@ -113,10 +116,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to enable scrolling
     function enableScroll() {
         // Restore the body and HTML scroll
-        document.body.classList.remove("scroll-locked"); // Remove scroll-locked class
+        document.body.classList.remove("scroll-locked");
         document.body.style.overflow = "auto";
-        document.body.style.height = "auto"; // Restore the body height
-        document.documentElement.style.overflow = "auto"; // Restore scroll on the HTML element
+        document.body.style.position = "static"; // Restore the body position
+        document.body.style.width = "auto"; // Restore the body width
 
         // Remove scroll prevention listeners
         document.removeEventListener("wheel", preventScroll);
@@ -125,10 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to prevent default scroll behavior
     function preventScroll(event) {
-        // Only prevent default if the event is a scroll event
-        if (event.type === "wheel" || event.type === "touchmove") {
-            event.preventDefault();
-        }
+        event.preventDefault();
     }
 });
 
@@ -317,36 +317,31 @@ document.addEventListener("DOMContentLoaded", function () {
 //CTA block opacity changer
 document.addEventListener("DOMContentLoaded", function () {
     const cta = document.querySelector(".cta");
-    let isScrolling;
 
     function handleScroll() {
-        if (window.scrollY === 0) {
-            cta.style.opacity = "1"; // Fully visible at top
+        const scrollTop = window.scrollY;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = window.innerHeight;
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 5; // Allow small margin for rounding errors
+
+        if (scrollTop === 0 || isAtBottom) {
+            cta.style.opacity = "1"; // Fully visible at top and bottom
         } else {
-            cta.style.opacity = "0.3"; // Reduce opacity when scrolling starts
+            cta.style.opacity = "0.3"; // Reduce opacity when scrolling
         }
     }
 
-    window.addEventListener("scroll", function () {
-        clearTimeout(isScrolling);
-        handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Run once on page load to set initial state
 
-        // Reset opacity after scrolling stops
-        isScrolling = setTimeout(() => {
-            if (window.scrollY !== 0) {
-                cta.style.opacity = "0.2";
-            }
-        }, 150);
-    });
-
-    // Ensure hover overrides the opacity change
+    // Ensure hover always forces full opacity
     cta.addEventListener("mouseenter", function () {
         cta.style.opacity = "1";
     });
 
     cta.addEventListener("mouseleave", function () {
-        if (window.scrollY !== 0) {
-            cta.style.opacity = "0.2";
+        if (window.scrollY !== 0 && window.scrollY + window.innerHeight < document.documentElement.scrollHeight - 5) {
+            cta.style.opacity = "0.3";
         }
     });
 });
@@ -360,3 +355,30 @@ document.querySelectorAll(".press-card").forEach(card => {
         }
     });
 });
+
+//Footer image
+document.addEventListener("DOMContentLoaded", function () {
+    const footerImg = document.querySelector(".footer-img");
+
+    footerImg.addEventListener("mouseenter", function () {
+        footerImg.classList.add("hover-state");
+    });
+
+    footerImg.addEventListener("mouseleave", function () {
+        footerImg.classList.remove("hover-state");
+        footerImg.classList.remove("click-state");
+
+        // Reset background image by clearing inline styles and relying on CSS
+        footerImg.style.backgroundImage = "";
+    });
+
+    footerImg.addEventListener("click", function () {
+        // Force Chrome to reload the GIF by appending a timestamp
+        const gifPath = `../assets/images/lightning.gif?${new Date().getTime()}`;
+        footerImg.style.backgroundImage = `url('${gifPath}')`;
+
+        // Ensure that click-state class is applied
+        footerImg.classList.add("click-state");
+    });
+});
+
