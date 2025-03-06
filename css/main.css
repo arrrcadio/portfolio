@@ -785,32 +785,34 @@
 /* SWITCH TO ONE COLUMN ON MOBILE */
 @media (max-width: 700px) {
     .career-track-container {
-        display: block; /* Stack elements vertically */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important; /* Stretch cards to full width */
+        justify-content: center !important;
         min-width: 100%; /* Prevent horizontal scrolling */
-        padding-left: 0px;
-        padding-right: 0px;
-        width: calc(100% - 32px) !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
         padding-bottom: 16px; /* Extra space to avoid shadow clipping */
+        gap: 0px !important; /* Reduce vertical gap between cards */
     }
 
-
     .career-card {
-        max-width: calc(100% - 32px); 
-        width: 100%;
-        height: auto; /* Let content define height */
-        padding: 16px; /* Add more spacing for better readability */
-        display: flex;
-        flex-direction: column; /* Switch layout inside the card */
-        align-items: flex-start; /* Align content to left */
-        gap: 8px; /* Space between elements */
+        flex: 1 1 100% !important; /* Take full width */
+        min-width: 280px !important; /* Prevent too small cards */
+        max-width: 100% !important;
+        margin: 0 !important; /* Remove all margins */
+        padding: 16px; /* Adjust padding if needed */
     }
 
     /* Title + Logo in One Row */
     .career-title {
         display: flex;
         align-items: flex-start;
+        margin-bottom: 8px; /* Adjust spacing between title and subtitle */
     }
 
     .career-track {
@@ -820,6 +822,7 @@
     /* Subtitle (Company Name) */
     .career-subtitle {
         opacity: 0.6;
+        margin-bottom: 8px; /* Adjust spacing between subtitle and content */
     }
 
     /* Container for Title, Logo, and Subtitle */
@@ -827,7 +830,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 4px;
+        gap: 4px; /* Adjust spacing between elements */
     }
 
     /* Align Work Years to the Right */
@@ -872,6 +875,16 @@
     max-width: calc(100% - 64px); 
     }
 
+    .career-track-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center !important; /* Centering like press cards */
+    max-width: calc(100% - 32px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    }
 }
 
 
