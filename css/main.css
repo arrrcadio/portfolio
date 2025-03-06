@@ -617,7 +617,7 @@
 /* Link + Icon Styling inside Links Block */
 .about-me-links a {
     font-weight: 500; /* Medium weight */
-    font-size: 16px;
+    font-size: 20px;
     display: inline-flex; /* Keep text and icon together */
     align-items: center;
     white-space: nowrap;
@@ -633,8 +633,8 @@
 .link-icon-wrapper {
     position: relative;
     display: inline-block;
-    width: 16px !important;
-    height: 16px !important;
+    width: 24px !important;
+    height: 24px !important;
     margin-left: 4px; /* Space between text and icon */
 }
 
@@ -643,8 +643,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 16px !important;
-    height: 16px !important;
+    width: 24px !important;
+    height: 24px !important;
     object-fit: contain;
 }
 
@@ -789,8 +789,12 @@
         min-width: 100%; /* Prevent horizontal scrolling */
         padding-left: 0px;
         padding-right: 0px;
+        width: calc(100% - 32px) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
         padding-bottom: 16px; /* Extra space to avoid shadow clipping */
     }
+
 
     .career-card {
         max-width: calc(100% - 32px); 
