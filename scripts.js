@@ -250,42 +250,35 @@ document.addEventListener("DOMContentLoaded", function () {
     const image = document.getElementById("rotatingObject");
     const totalFrames = 17;
     const images = [];
-    let lastScrollY = 0;
-    let firstScrollDetected = false;
-
+    let lastFrameIndex = -1;
+    
     // Preload images
     for (let i = 1; i <= totalFrames; i++) {
-        const img = new Image();
-        img.src = `assets/frames/frame_${String(i).padStart(2, '0')}.png`;
-        images.push(img.src);
+        images.push(`assets/frames/frame_${String(i).padStart(2, '0')}.png`);
     }
 
-    window.addEventListener("scroll", () => {
+    function updateFrame() {
         let maxScroll = window.innerHeight * 0.7;
         let scrollY = window.scrollY;
 
-        if (!firstScrollDetected && scrollY > 0) {
-            firstScrollDetected = true;
-            lastScrollY = scrollY - 1;
+        // Calculate frame index based on scroll position
+        let scrollPercent = Math.min(Math.max(scrollY / maxScroll, 0), 1);
+        let frameIndex = Math.floor(scrollPercent * (totalFrames - 1));
+
+        // Only update if the frame index changes
+        if (frameIndex !== lastFrameIndex) {
+            image.src = images[frameIndex];
+            lastFrameIndex = frameIndex;
         }
 
-        let frameIndex;
-        if (scrollY >= maxScroll) {
-            frameIndex = totalFrames - 1;
-        } else {
-            let scrollPercent = Math.max(0, (scrollY - lastScrollY) / maxScroll);
-            frameIndex = Math.min(Math.floor(scrollPercent * totalFrames), totalFrames - 1);
-        }
+        // Request the next frame update
+        requestAnimationFrame(updateFrame);
+    }
 
-        if (image.src !== images[frameIndex]) {
-            image.classList.add("hidden");
-            setTimeout(() => {
-                image.src = images[frameIndex];
-                image.classList.remove("hidden");
-            }, 70);
-        }
-    });
+    // Start smooth animation loop
+    requestAnimationFrame(updateFrame);
 });
+
 
 // Hero text change
 document.addEventListener("DOMContentLoaded", function () {
