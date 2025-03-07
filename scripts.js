@@ -250,59 +250,41 @@ document.addEventListener("DOMContentLoaded", function () {
     const image = document.getElementById("rotatingObject");
     const totalFrames = 17;
     const images = [];
-    let loadedFrames = 0;
-    let currentFrame = 0;
-    let targetFrame = 0;
+    let lastFrameIndex = -1;
     let isAnimating = false;
 
-    function preloadImages(callback) {
-        let loaded = 0;
-
-        for (let i = 1; i <= totalFrames; i++) {
-            const img = new Image();
-            img.src = `assets/frames/frame_${String(i).padStart(2, '0')}.png`;
-
-            img.onload = () => {
-                loaded++;
-                if (loaded === totalFrames) callback(); // Start animation only when all images are loaded
-            };
-
-            images.push(img.src);
-        }
+    // Preload images
+    for (let i = 1; i <= totalFrames; i++) {
+        const img = new Image();
+        img.src = `assets/frames/frame_${String(i).padStart(2, '0')}.png`;
+        images.push(img.src);
     }
 
     function updateFrame() {
-        currentFrame += (targetFrame - currentFrame) * 0.4; // Smooth transition
-        let frameIndex = Math.round(currentFrame);
+        let scrollY = window.scrollY;
+        let viewportHeight = window.innerHeight;
+        let scrollProgress = Math.min(scrollY / viewportHeight, 1); // From 0 to 1
 
-        if (image.src !== images[frameIndex]) {
+        let frameIndex = Math.floor(scrollProgress * (totalFrames - 1));
+
+        if (frameIndex !== lastFrameIndex) {
             image.src = images[frameIndex];
+            lastFrameIndex = frameIndex;
         }
 
-        if (Math.abs(currentFrame - targetFrame) > 0.3) {
-            requestAnimationFrame(updateFrame);
-        } else {
-            isAnimating = false;
-        }
+        isAnimating = false;
     }
 
-    function handleScroll() {
-        let scrollY = window.scrollY;
-        let maxScroll = window.innerHeight; // 100vh
-
-        let scrollPercent = Math.min(scrollY / maxScroll, 1);
-        targetFrame = scrollPercent * (totalFrames - 1);
-
+    function onScroll() {
         if (!isAnimating) {
             isAnimating = true;
             requestAnimationFrame(updateFrame);
         }
     }
 
-    preloadImages(() => {
-        window.addEventListener("scroll", handleScroll);
-    });
+    window.addEventListener("scroll", onScroll);
 });
+
 
 
 
