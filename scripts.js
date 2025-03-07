@@ -252,6 +252,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const images = [];
     let lastFrameIndex = -1;
     let isAnimating = false;
+    let wasAtTop = true; // Tracks if we were at the top before
 
     // Preload images & store them persistently
     for (let i = 1; i <= totalFrames; i++) {
@@ -276,10 +277,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function onScroll() {
-        if (window.scrollY === 0) {
-            // ✅ When scrolled to top, force reset to first frame
-            lastFrameIndex = -1;
-            image.src = images[0].src;
+        let atTop = window.scrollY === 0;
+
+        if (atTop) {
+            // ✅ Force reset on Safari by resetting the image source
+            if (!wasAtTop) {
+                image.src = images[0].src + "?t=" + new Date().getTime(); // Append timestamp to force refresh
+                lastFrameIndex = -1;
+            }
+            wasAtTop = true;
+        } else {
+            if (wasAtTop) {
+                // ✅ Reload first frame to ensure animation starts properly
+                image.src = images[0].src + "?cache-bypass";
+            }
+            wasAtTop = false;
         }
 
         if (!isAnimating) {
