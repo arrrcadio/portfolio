@@ -250,34 +250,53 @@ document.addEventListener("DOMContentLoaded", function () {
     const image = document.getElementById("rotatingObject");
     const totalFrames = 17;
     const images = [];
-    let lastFrameIndex = -1;
-    
+    let currentFrame = 0;
+    let targetFrame = 0;
+    let isAnimating = false;
+
     // Preload images
     for (let i = 1; i <= totalFrames; i++) {
         images.push(`assets/frames/frame_${String(i).padStart(2, '0')}.png`);
     }
 
     function updateFrame() {
-        let maxScroll = window.innerHeight * 0.7;
-        let scrollY = window.scrollY;
+        // Faster interpolation for smoother animation
+        currentFrame += (targetFrame - currentFrame) * 0.5; // Adjusted from 0.2 to 0.5
 
-        // Calculate frame index based on scroll position
-        let scrollPercent = Math.min(Math.max(scrollY / maxScroll, 0), 1);
-        let frameIndex = Math.floor(scrollPercent * (totalFrames - 1));
+        // Round to nearest frame
+        let frameIndex = Math.round(currentFrame);
 
-        // Only update if the frame index changes
-        if (frameIndex !== lastFrameIndex) {
+        // Only update if frame changes
+        if (image.src !== images[frameIndex]) {
             image.src = images[frameIndex];
-            lastFrameIndex = frameIndex;
         }
 
-        // Request the next frame update
-        requestAnimationFrame(updateFrame);
+        // Keep animating until target frame is reached
+        if (Math.abs(currentFrame - targetFrame) > 0.3) {
+            requestAnimationFrame(updateFrame);
+        } else {
+            isAnimating = false;
+        }
     }
 
-    // Start smooth animation loop
-    requestAnimationFrame(updateFrame);
+    function handleScroll() {
+        let scrollY = window.scrollY;
+        let maxScroll = window.innerHeight; // 100vh
+
+        // Ensure animation completes within 100vh
+        let scrollPercent = Math.min(scrollY / maxScroll, 1); // Clamp between 0 and 1
+        targetFrame = scrollPercent * (totalFrames - 1);
+
+        if (!isAnimating) {
+            isAnimating = true;
+            requestAnimationFrame(updateFrame);
+        }
+    }
+
+    window.addEventListener("scroll", handleScroll);
 });
+
+
 
 
 // Hero text change
