@@ -250,28 +250,35 @@ document.addEventListener("DOMContentLoaded", function () {
     const image = document.getElementById("rotatingObject");
     const totalFrames = 17;
     const images = [];
+    let loadedFrames = 0;
     let currentFrame = 0;
     let targetFrame = 0;
     let isAnimating = false;
 
-    // Preload images
-    for (let i = 1; i <= totalFrames; i++) {
-        images.push(`assets/frames/frame_${String(i).padStart(2, '0')}.png`);
+    function preloadImages(callback) {
+        let loaded = 0;
+
+        for (let i = 1; i <= totalFrames; i++) {
+            const img = new Image();
+            img.src = `assets/frames/frame_${String(i).padStart(2, '0')}.png`;
+
+            img.onload = () => {
+                loaded++;
+                if (loaded === totalFrames) callback(); // Start animation only when all images are loaded
+            };
+
+            images.push(img.src);
+        }
     }
 
     function updateFrame() {
-        // Faster interpolation for smoother animation
-        currentFrame += (targetFrame - currentFrame) * 0.5; // Adjusted from 0.2 to 0.5
-
-        // Round to nearest frame
+        currentFrame += (targetFrame - currentFrame) * 0.4; // Smooth transition
         let frameIndex = Math.round(currentFrame);
 
-        // Only update if frame changes
         if (image.src !== images[frameIndex]) {
             image.src = images[frameIndex];
         }
 
-        // Keep animating until target frame is reached
         if (Math.abs(currentFrame - targetFrame) > 0.3) {
             requestAnimationFrame(updateFrame);
         } else {
@@ -283,8 +290,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let scrollY = window.scrollY;
         let maxScroll = window.innerHeight; // 100vh
 
-        // Ensure animation completes within 100vh
-        let scrollPercent = Math.min(scrollY / maxScroll, 1); // Clamp between 0 and 1
+        let scrollPercent = Math.min(scrollY / maxScroll, 1);
         targetFrame = scrollPercent * (totalFrames - 1);
 
         if (!isAnimating) {
@@ -293,8 +299,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    window.addEventListener("scroll", handleScroll);
+    preloadImages(() => {
+        window.addEventListener("scroll", handleScroll);
+    });
 });
+
 
 
 
