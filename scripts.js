@@ -253,11 +253,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let lastFrameIndex = -1;
     let isAnimating = false;
 
-    // Preload images
+    // Preload images & keep them in memory
     for (let i = 1; i <= totalFrames; i++) {
         const img = new Image();
         img.src = `assets/frames/frame_${String(i).padStart(2, '0')}.png`;
-        images.push(img.src);
+        images.push(img);
     }
 
     function updateFrame() {
@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let frameIndex = Math.floor(scrollProgress * (totalFrames - 1));
 
         if (frameIndex !== lastFrameIndex) {
-            image.src = images[frameIndex];
+            image.src = images[frameIndex].src; // Use the preloaded image
             lastFrameIndex = frameIndex;
         }
 
