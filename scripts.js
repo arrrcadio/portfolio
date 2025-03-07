@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let lastFrameIndex = -1;
     let isAnimating = false;
 
-    // Preload images & keep them in memory
+    // Preload images & store them persistently
     for (let i = 1; i <= totalFrames; i++) {
         const img = new Image();
         img.src = `assets/frames/frame_${String(i).padStart(2, '0')}.png`;
@@ -263,12 +263,12 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateFrame() {
         let scrollY = window.scrollY;
         let viewportHeight = window.innerHeight;
-        let scrollProgress = Math.min(scrollY / viewportHeight, 1); // From 0 to 1
+        let scrollProgress = Math.min(scrollY / viewportHeight, 1); // 0 to 1
 
         let frameIndex = Math.floor(scrollProgress * (totalFrames - 1));
 
         if (frameIndex !== lastFrameIndex) {
-            image.src = images[frameIndex].src; // Use the preloaded image
+            image.src = images[frameIndex].src;
             lastFrameIndex = frameIndex;
         }
 
@@ -276,6 +276,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function onScroll() {
+        if (window.scrollY === 0) {
+            // ✅ When scrolled to top, force reset to first frame
+            lastFrameIndex = -1;
+            image.src = images[0].src;
+        }
+
         if (!isAnimating) {
             isAnimating = true;
             requestAnimationFrame(updateFrame);
