@@ -34,9 +34,15 @@
     font-size: 40px;
     font-weight: 400;
     line-height: 1.1;
-    position: relative; 
-    transform: none; 
+    position: relative;
+    transform: none;
     cursor: default;
+
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    border-radius: 8px; /* Optional: rounded corners */
+    padding: 16px 24px; /* Optional: inner spacing */
+    display: inline-block; /* Shrinks to fit content */
+    backdrop-filter: blur(3px); /* Optional: glass effect */
 }
 
 
@@ -60,6 +66,7 @@
     color: #343634;
     font-weight: 400;
 }
+
 
 
 /* Responsive styles for screens narrower than 700px */
@@ -314,6 +321,20 @@
     margin: 0px;
 }
 
+
+.case-study-card .case-study-title,
+.case-study-card .case-study-description,
+.case-study-card .case-study-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.case-study-card {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Keep original text color */
+    display: block; /* Ensure it behaves like a div */
+}
+
 .case-study-card {
     width: calc(50% - 8px); /* 2 cards per row */
     max-width: 780px;
@@ -367,7 +388,7 @@
 .case-study-title {
     font-size: 28px;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
     display: flex;
     align-items: center;
     gap: 8px; /* Space between text and logo */

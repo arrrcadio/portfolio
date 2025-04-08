@@ -1,0 +1,106 @@
+main {
+    margin-left: 32px;
+    margin-right: 32px;
+}
+
+@media (max-width: 1000px) {
+    main {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+}
+
+.case-fullimg {
+    display: block; /* Ensures proper centering with margin auto */
+    max-width: 100%; /* Ensures it resizes on smaller screens */
+    width: 1000px; /* Default width */
+    margin: 0 auto; /* Centers the image horizontally */
+    margin-bottom: 48px;
+}
+
+.case-study-title-inside {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers the content horizontally */
+    gap: 4px; /* Space between text and logo */
+    width: 100%; /* Ensures it spans the full available width */
+    text-align: center; /* Ensures text inside is centered */
+}
+
+.case-study-logo-inside {
+    width: 24px;
+    height: 24px;
+}
+
+.case-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    gap: 0px; /* Adjust spacing between blocks */
+}
+
+.case-block {
+    display: flex;
+    flex-direction: row; /* Align items inside each block in a row */
+    align-items: center; /* Align content vertically inside the row */
+    justify-content: center; /* Center content inside the row */
+    width: 100%; /* Make sure the blocks take full available width */
+    max-width: 1000px; /* Set a max width if needed */
+}
+
+.case-block h6 {
+    text-align: center; /* Center text explicitly */
+    width: 100%; /* Make sure it spans full width */
+}
+
+.case-tags {
+    display: flex;
+    gap: 16px; /* Space between tags */
+    justify-content: center; /* Center tags horizontally */
+    flex-wrap: wrap; /* Allow wrapping if needed */
+}
+
+.case-tag {
+    background-color: #D7EAFF;
+    padding: 8px 16px; /* Spacing inside */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px;
+    font-weight: 500;
+    color: #446EAD; 
+    white-space: nowrap; /* Prevents tags from breaking into multiple lines */
+    cursor: default;
+}
+
+.warning-box {
+    display: none; /* Hide by default on larger screens */
+}
+
+@media (max-width: 1000px) {
+    .warning-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px; /* Adjust width as needed */
+    border: 1px solid #343634;
+    border-radius: 8px;
+    padding: 8px 16px;
+    text-align: center;
+    color: #343634;
+    margin: 20px auto;
+    }
+}
+
+.warning-icon {
+    margin-top: 4px;
+}
+
+.warning-text {
+    font-size: 16px;
+    margin: 8px 0 4px;
+    line-height: 1.4;
+}

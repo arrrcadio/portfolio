@@ -125,6 +125,10 @@ nav ul li a:hover {
         display: none;
     }
 
+    .header-right {
+        opacity: 25%;
+    }
+
     /* Replace the location pin icon with another icon */
     .header-right img {
         display: none; /* Hide the current icon */

@@ -248,7 +248,7 @@ document.addEventListener("mousemove", function(e) {
 // Rotating object background
 document.addEventListener("DOMContentLoaded", function () {
     const image = document.getElementById("rotatingObject");
-    const totalFrames = 17;
+    const totalFrames = 13;
     const images = [];
     let lastFrameIndex = -1;
     let isAnimating = false;
@@ -260,20 +260,20 @@ document.addEventListener("DOMContentLoaded", function () {
         images.push(img);
     }
 
-    function updateFrame() {
-        let scrollY = window.scrollY;
-        let viewportHeight = window.innerHeight;
-        let scrollProgress = Math.min(scrollY / viewportHeight, 1); // 0 to 1
+function updateFrame() {
+    let scrollY = window.scrollY;
+    let threshold = window.innerHeight * 0.28; // ← 30% of viewport
+    let scrollProgress = Math.min(scrollY / threshold, 1); // 0 to 1
 
-        let frameIndex = Math.floor(scrollProgress * (totalFrames - 1));
+    let frameIndex = Math.floor(scrollProgress * (totalFrames - 1));
 
-        if (frameIndex !== lastFrameIndex) {
-            image.src = images[frameIndex].src;
-            lastFrameIndex = frameIndex;
-        }
-
-        isAnimating = false;
+    if (frameIndex !== lastFrameIndex) {
+        image.src = images[frameIndex].src;
+        lastFrameIndex = frameIndex;
     }
+
+    isAnimating = false;
+}
 
     function onScroll() {
         if (window.scrollY === 0) {
