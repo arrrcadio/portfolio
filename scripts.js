@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         renderer: "svg",
         loop: false,
         autoplay: false,
-        path: "assets/animations/logo-animation.json"
+        path: "/assets/animations/logo-animation.json"
     });
 
     // Play animation on hover
@@ -241,7 +241,7 @@ document.addEventListener("mousemove", function(e) {
     // 🔥 Force reapply custom cursor
     const menuItem = document.querySelector(".header-menu ul li:nth-child(3) a");
     if (menuItem) {
-        menuItem.style.cursor = "url('assets/icons/cs_cursor.svg') 18 18, auto";
+        menuItem.style.cursor = "url('/assets/icons/cs_cursor.svg') 18 18, auto";
     }
 });
 
@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Preload images & store them persistently
     for (let i = 1; i <= totalFrames; i++) {
         const img = new Image();
-        img.src = `assets/frames/frame_${String(i).padStart(2, '0')}.png`;
+        img.src = `/assets/frames/frame_${String(i).padStart(2, '0')}.png`;
         images.push(img);
     }
 
