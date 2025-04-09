@@ -245,51 +245,78 @@ document.addEventListener("mousemove", function(e) {
     }
 });
 
+
+
 // Rotating object background
 document.addEventListener("DOMContentLoaded", function () {
     const image = document.getElementById("rotatingObject");
     const totalFrames = 13;
     const images = [];
-    let lastFrameIndex = -1;
-    let isAnimating = false;
+    let currentFrame = 0;
+    let isScrollLocked = true;
 
-    // Preload images & store them persistently
+    // Preload images
     for (let i = 1; i <= totalFrames; i++) {
         const img = new Image();
         img.src = `assets/frames/frame_${String(i).padStart(2, '0')}.png`;
         images.push(img);
     }
 
-function updateFrame() {
-    let scrollY = window.scrollY;
-    let threshold = window.innerHeight * 0.28; // ← 30% of viewport
-    let scrollProgress = Math.min(scrollY / threshold, 1); // 0 to 1
+    // Lock scrolling initially
+    document.body.classList.add("scroll-lock");
 
-    let frameIndex = Math.floor(scrollProgress * (totalFrames - 1));
+    // Setup animation on scroll
+    window.addEventListener("wheel", (e) => {
+        if (!isScrollLocked) return;
 
-    if (frameIndex !== lastFrameIndex) {
-        image.src = images[frameIndex].src;
-        lastFrameIndex = frameIndex;
-    }
+        e.preventDefault();
 
-    isAnimating = false;
-}
-
-    function onScroll() {
-        if (window.scrollY === 0) {
-            // ✅ When scrolled to top, force reset to first frame
-            lastFrameIndex = -1;
-            image.src = images[0].src;
+        if (e.deltaY > 0 && currentFrame < totalFrames - 1) {
+            currentFrame++;
+            image.src = images[currentFrame].src;
+        } else if (e.deltaY < 0 && currentFrame > 0) {
+            currentFrame--;
+            image.src = images[currentFrame].src;
         }
 
-        if (!isAnimating) {
-            isAnimating = true;
-            requestAnimationFrame(updateFrame);
+        // When final frame is reached, unlock scroll
+        if (currentFrame === totalFrames - 1) {
+            document.body.classList.remove("scroll-lock");
+            isScrollLocked = false;
         }
-    }
+    }, { passive: false });
 
-    window.addEventListener("scroll", onScroll);
+    // Optional: Touch support
+    let startY = 0;
+
+    window.addEventListener("touchstart", (e) => {
+        startY = e.touches[0].clientY;
+    });
+
+    window.addEventListener("touchmove", (e) => {
+        if (!isScrollLocked) return;
+
+        const deltaY = e.touches[0].clientY - startY;
+
+        if (Math.abs(deltaY) < 10) return;
+
+        e.preventDefault();
+
+        if (deltaY < 0 && currentFrame < totalFrames - 1) {
+            currentFrame++;
+            image.src = images[currentFrame].src;
+        } else if (deltaY > 0 && currentFrame > 0) {
+            currentFrame--;
+            image.src = images[currentFrame].src;
+        }
+
+        if (currentFrame === totalFrames - 1) {
+            document.body.classList.remove("scroll-lock");
+            isScrollLocked = false;
+        }
+    }, { passive: false });
 });
+
 
 
 
