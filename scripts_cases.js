@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         renderer: "svg",
         loop: false,
         autoplay: false,
-        path: "assets/animations/logo-animation.json"
+        path: "/assets/animations/logo-animation.json"
     });
 
     // Play animation on hover
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     footerImg.addEventListener("click", function () {
         // Force Chrome to reload the GIF by appending a timestamp
-        const gifPath = `../assets/images/lightning.gif?${new Date().getTime()}`;
+        const gifPath = `/../assets/images/lightning.gif?${new Date().getTime()}`;
         footerImg.style.backgroundImage = `url('${gifPath}')`;
 
         // Ensure that click-state class is applied
